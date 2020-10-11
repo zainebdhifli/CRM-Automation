@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="Title" Type="InArgument(x:String)" />
     <x:Property Name="Head" Type="InArgument(x:String)" />
+    <x:Property Name="Calend" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>870.4,5477.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>870.4,5777.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence1_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -65,7 +66,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence1" sap:VirtualizedContainerService.HintSize="622.4,5312.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Sequence1" sap:VirtualizedContainerService.HintSize="622.4,5612.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="Durée" />
       <Variable x:TypeArguments="scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))" Name="reslt" />
@@ -187,9 +188,9 @@
         <InArgument x:TypeArguments="x:String">[txt.Split(" "c)(1).ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Durée&gt;= 12 And Mois=&quot;mois&quot;]" sap:VirtualizedContainerService.HintSize="580.8,3160.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Durée&gt;= 12 And Mois=&quot;mois&quot;]" sap:VirtualizedContainerService.HintSize="580.8,3460.8" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Get details" sap:VirtualizedContainerService.HintSize="375.2,3011.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Get details" sap:VirtualizedContainerService.HintSize="375.2,3311.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="word" />
           </Sequence.Variables>
@@ -389,14 +390,16 @@
               <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(Coordonnées,"((?&lt;=Nom.).*)").Value]</InArgument>
             </Assign.Value>
           </Assign>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[Nom]" />
           <Assign DisplayName="Assign(Replace { by  ( )" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_12">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[word]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(Nom, “[^a-z A-Z]”, “(”)]</InArgument>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(Nom, “[)]”, “(”)]</InArgument>
             </Assign.Value>
           </Assign>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[word]" />
           <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[Titre]</OutArgument>
@@ -405,6 +408,7 @@
               <InArgument x:TypeArguments="x:String">[word.ToString.Split("("c)(1).replace(”(","")]</InArgument>
             </Assign.Value>
           </Assign>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Titre]" />
           <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[Société]</OutArgument>
@@ -449,9 +453,18 @@
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sequence2.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="Label">[Général]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="lien">[url]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="Head">[Mission]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Label">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Général" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="lien">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="url" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Head">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Mission" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Jour">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Calend" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>

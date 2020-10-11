@@ -3,11 +3,12 @@
     <x:Property Name="Label" Type="InArgument(x:String)" />
     <x:Property Name="lien" Type="InArgument(x:String)" />
     <x:Property Name="Head" Type="InArgument(x:String)" />
+    <x:Property Name="Jour" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>993.6,428</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>870.4,428</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -70,6 +71,6 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:AppendLine DisplayName="Append Line" FileName="C:\Users\user\Desktop\CRM_Automation\CRM_Automation" sap:VirtualizedContainerService.HintSize="333.6,134.4" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[Head+label+Chr(10)+lien+vbNewLine+&quot;****&quot;]" />
+    <ui:AppendLine DisplayName="Append Line" FileName="C:\Users\user\Desktop\CRM_Automation\CRM_Automation" sap:VirtualizedContainerService.HintSize="333.6,134.4" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[Jour+Chr(10)+Head+label+Chr(10)+lien+vbNewLine+&quot;****&quot;]" />
   </Sequence>
 </Activity>
